@@ -25,18 +25,17 @@ onMounted(async () => {
     </div>
     <div class="flex justify-center items-center">
       <div
-        class="flex flex-col items-center border-2 border-gray-300 rounded-md p-2 w-1/2 h-1/2 mt-5"
+        class="flex flex-col items-center border-2 border-gray-300 rounded-md p-2 w-3/4 h-1/2 mt-5"
       >
-        <div v-if="products.length > 0">
-          <div v-for="product in products" :key="product.id">
-            <span>{{ product.title }}</span>
-            <span>{{ product.price }}</span>
-            <span>{{ product.description }}</span>
-            <span>{{ product.category }}</span>
-            <span>{{ product.image }}</span>
-            <span>{{ product.rating.rate }}</span>
-            <span>{{ product.rating.count }}</span>
-          </div>
+        <div
+          v-if="products.length > 0"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4"
+        >
+          <ProductCard
+            v-for="product in products"
+            :product="product"
+            :key="product.id"
+          />
         </div>
         <div v-else-if="loading">
           <div
