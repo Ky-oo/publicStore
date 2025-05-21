@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getProducts } from "../stores/productsStore";
+import { addProductToCart, getProductsInCart } from "../stores/cartStore";
 import type { Product } from "../types/products";
 
 const searchQuery = ref("");
@@ -12,11 +13,15 @@ onMounted(async () => {
   loading.value = false;
 });
 
-const handleAddProductToCart = (product: Product) => {};
+const handleAddProductToCart = (product: Product) => {
+  addProductToCart(product);
+};
 </script>
 <template>
   <div>
     <div class="flex justify-center flex-col items-center">
+      <Cart />
+
       <h1 class="text-3xl font-bold underline">Store</h1>
       <input
         class="border-2 border-gray-300 rounded-md p-2 w-1/4 mt-5"
