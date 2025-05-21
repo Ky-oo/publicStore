@@ -4,16 +4,12 @@ interface Rating {
 }
 
 interface Product {
-  id: number;
+  id: string;
   title: string;
-  price: number;
+  price: string;
   description: string;
   category: string;
-  image: string;
   rating: Rating;
 }
 
-export {
-  Product,
-  Rating,
-}
+export { Product, Rating };

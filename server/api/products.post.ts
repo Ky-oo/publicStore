@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import type { Product } from "../../types/products";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
@@ -10,12 +11,13 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const products = [];
+  const products: Product[] = [];
 
   for (let i = 0; i < body.quantity; i++) {
     products.push({
+      id: faker.string.uuid(),
       title: faker.commerce.productDescription(),
-      price: faker.commerce.price({ min: 100, max: 200, dec: 0, symbol: "$" }),
+      price: faker.commerce.price({ min: 100, max: 200, dec: 0, symbol: "€" }),
       description: faker.commerce.productDescription(),
       rating: {
         rate: faker.number.int({ min: 1, max: 5 }),
