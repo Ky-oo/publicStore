@@ -1,14 +1,11 @@
 import type { Product } from "../types/products";
-import { useLocalStorage } from "@vueuse/core";
-
-export const products = useLocalStorage("products", [] as Product[]);
 
 const addProducts = (newProducts: Product[]) => {
-  products.value = newProducts;
+  localStorage.setItem("products", JSON.stringify(newProducts));
 };
 
 const getProducts = () => {
-  return products.value;
+  return JSON.parse(localStorage.getItem("products") || "[]");
 };
 
 export { addProducts, getProducts };
