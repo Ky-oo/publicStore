@@ -1,19 +1,14 @@
-import { defineStore, skipHydrate } from "pinia";
-import { useLocalStorage } from "@vueuse/core";
 import type { Product } from "../types/products";
+import { useLocalStorage } from "@vueuse/core";
 
-export const useProductsStore = defineStore("products", () => {
-  const products = useLocalStorage("products", [] as Product[]);
+export const products = useLocalStorage("products", [] as Product[]);
 
-  const addProducts = (newProducts: Product[]) => {
-    products.value = newProducts;
-  };
+const addProducts = (newProducts: Product[]) => {
+  products.value = newProducts;
+};
 
-  const getProducts = () => products.value;
+const getProducts = () => {
+  return products.value;
+};
 
-  return {
-    products: skipHydrate(products),
-    addProducts,
-    getProducts,
-  };
-});
+export { addProducts, getProducts };

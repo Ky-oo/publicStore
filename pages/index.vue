@@ -2,14 +2,13 @@
 import { addProductToCart } from "../stores/cartStore";
 import type { Product } from "../types/products";
 import { faker } from "@faker-js/faker";
-import { useProductsStore } from "../stores/productsStore";
+import { getProducts } from "../stores/productsStore";
 const searchQuery = ref("");
 const products = ref<Product[]>([]);
 const loading = ref(true);
-const productsStore = useProductsStore();
 
 onMounted(async () => {
-  products.value = productsStore.products;
+  products.value = getProducts();
   loading.value = false;
 });
 
@@ -21,7 +20,7 @@ const handleAddProductToCart = (product: Product) => {
 const refreshProducts = async () => {
   loading.value = true;
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  products.value = productsStore.products;
+  products.value = getProducts();
   loading.value = false;
 };
 </script>
