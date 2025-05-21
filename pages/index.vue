@@ -21,6 +21,13 @@ const handleAddProductToCart = (product: Product) => {
 </script>
 <template>
   <div>
+    <NuxtLink to="/admin">
+      <button
+        class="bg-blue-500 text-white p-2 rounded-md m-5 hover:bg-blue-600 cursor-pointer"
+      >
+        Admin
+      </button>
+    </NuxtLink>
     <div class="flex justify-center flex-col items-center">
       <Cart />
 
