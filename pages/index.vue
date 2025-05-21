@@ -11,6 +11,8 @@ onMounted(async () => {
   products.value = getProducts();
   loading.value = false;
 });
+
+const handleAddProductToCart = (product: Product) => {};
 </script>
 <template>
   <div>
@@ -35,6 +37,7 @@ onMounted(async () => {
             v-for="product in products"
             :product="product"
             :key="product.id"
+            @addProductToCart="handleAddProductToCart"
           />
         </div>
         <div v-else-if="loading">
