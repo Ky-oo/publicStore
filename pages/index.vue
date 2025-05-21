@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { getProducts } from "../stores/productsStore";
+import type { Product } from "../types/products";
+
 const searchQuery = ref("");
-const products = ref([]);
+const products = ref<Product[]>([]);
 const loading = ref(false);
 
 onMounted(async () => {
   loading.value = true;
-  const response = await fetch("/api/products");
-  products.value = await response.json();
+  products.value = getProducts();
   loading.value = false;
 });
 </script>
@@ -27,7 +29,13 @@ onMounted(async () => {
       >
         <div v-if="products.length > 0">
           <div v-for="product in products" :key="product.id">
-            <span>Product</span>
+            <span>{{ product.title }}</span>
+            <span>{{ product.price }}</span>
+            <span>{{ product.description }}</span>
+            <span>{{ product.category }}</span>
+            <span>{{ product.image }}</span>
+            <span>{{ product.rating.rate }}</span>
+            <span>{{ product.rating.count }}</span>
           </div>
         </div>
         <div v-else-if="loading">
