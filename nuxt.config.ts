@@ -8,4 +8,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  runtimeConfig: {
+    password: process.env.NUXT_PASSWORD,
+  },
 });

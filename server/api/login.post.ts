@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig();
   const body = await readBody(event);
 
   if (!body.password) {
@@ -8,7 +9,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  if (body.password === "123soleil") {
+  if (body.password === config.password) {
     setCookie(event, "auth", "true");
     return {
       authenticated: true,
