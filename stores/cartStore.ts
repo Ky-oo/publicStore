@@ -11,4 +11,10 @@ const getProductsInCart = () => {
   return cart.value;
 };
 
-export { addProductToCart, getProductsInCart };
+const removeProductFromCart = (productToRemove: Product) => {
+  cart.value = cart.value.filter(
+    (product) => product.id !== productToRemove.id
+  );
+};
+
+export { addProductToCart, getProductsInCart, removeProductFromCart };
