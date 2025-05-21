@@ -2,8 +2,9 @@
 definePageMeta({
   middleware: ["auth"],
 });
-import { addProducts, getProducts } from "../stores/productsStore";
+import { useProductsStore } from "~/stores/productsStore";
 import type { Product } from "../types/products";
+const productsStore = useProductsStore();
 
 const products = ref([]);
 const loading = ref(false);
@@ -20,7 +21,7 @@ const createProducts = async () => {
     },
   });
 
-  addProducts(response.products as Product[]);
+  productsStore.addProducts(response.products as Product[]);
   loading.value = false;
 };
 </script>
@@ -41,12 +42,12 @@ const createProducts = async () => {
       class="bg-blue-500 text-white p-2 rounded-md mt-5 cursor-pointer hover:bg-blue-600"
     >
       {{
-        getProducts().length == 50
+        productsStore.products.length == 50
           ? "Create 50 new products"
           : "Create 50 Products"
       }}
     </button>
-    <div v-if="getProducts().length == 50">
+    <div v-if="productsStore.products.length == 50">
       <span class="text-red-500">Product already created</span>
     </div>
   </div>

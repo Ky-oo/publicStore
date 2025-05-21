@@ -1,11 +1,19 @@
+import { defineStore, skipHydrate } from "pinia";
+import { useLocalStorage } from "@vueuse/core";
 import type { Product } from "../types/products";
 
-const addProducts = (newProducts: Product[]) => {
-  localStorage.setItem("products", JSON.stringify(newProducts));
-};
+export const useProductsStore = defineStore("products", () => {
+  const products = useLocalStorage("products", [] as Product[]);
 
-const getProducts = () => {
-  return JSON.parse(localStorage.getItem("products") || "[]");
-};
+  const addProducts = (newProducts: Product[]) => {
+    products.value = newProducts;
+  };
 
-export { addProducts, getProducts };
+  const getProducts = () => products.value;
+
+  return {
+    products: skipHydrate(products),
+    addProducts,
+    getProducts,
+  };
+});
