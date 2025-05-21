@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { addProducts } from "../stores/productsStore";
+definePageMeta({
+  middleware: ["auth"],
+});
+import { addProducts, getProducts } from "../stores/productsStore";
 import type { Product } from "../types/products";
 
 const products = ref([]);
@@ -22,24 +25,29 @@ const createProducts = async () => {
 };
 </script>
 <template>
-  <div>
-    <div class="flex justify-center flex-col items-center">
-      <h1 class="text-3xl font-bold underline">Admin</h1>
+  <NuxtLink to="/">
+    <button
+      class="bg-blue-500 text-white p-2 rounded-md m-5 hover:bg-blue-600 cursor-pointer"
+    >
+      Back
+    </button>
+  </NuxtLink>
+  <div class="flex justify-center flex-col items-center">
+    <h1 class="text-3xl font-bold underline">Admin</h1>
 
-      <button
-        :class="
-          products.length == 200 || loading
-            ? 'disabled bg-gray-500'
-            : 'bg-blue-500'
-        "
-        @click="createProducts"
-        class="bg-blue-500 text-white p-2 rounded-md mt-5 cursor-pointer hover:bg-blue-600"
-      >
-        Creat 200 Product
-      </button>
-      <div v-if="products.length == 200">
-        <span class="text-red-500">Product already created</span>
-      </div>
+    <button
+      :class="loading ? 'disabled bg-gray-500' : 'bg-blue-500'"
+      @click="createProducts"
+      class="bg-blue-500 text-white p-2 rounded-md mt-5 cursor-pointer hover:bg-blue-600"
+    >
+      {{
+        getProducts().length == 200
+          ? "Create 200 new products"
+          : "Create 200 Product"
+      }}
+    </button>
+    <div v-if="getProducts().length == 200">
+      <span class="text-red-500">Product already created</span>
     </div>
   </div>
 </template>
