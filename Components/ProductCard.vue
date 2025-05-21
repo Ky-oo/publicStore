@@ -60,7 +60,7 @@ const addProductToCart = (product: Product) => {
           </div>
           <button
             @click="addProductToCart(product)"
-            class="bg-blue-500 text-white p-2 rounded-md"
+            class="bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-600"
           >
             Add to cart
           </button>

@@ -28,7 +28,11 @@ const handleAddProductToCart = (product: Product) => {
         type="text"
         v-model="searchQuery"
       />
-      <button class="bg-blue-500 text-white p-2 rounded-md mt-5">Search</button>
+      <button
+        class="bg-blue-500 text-white p-2 rounded-md mt-5 cursor-pointer hover:bg-blue-600"
+      >
+        Search
+      </button>
     </div>
     <div class="flex justify-center items-center">
       <div

@@ -3,6 +3,13 @@ import { getProductsInCart, removeProductFromCart } from "../stores/cartStore";
 </script>
 <template>
   <div>
+    <NuxtLink to="/">
+      <button
+        class="bg-blue-500 text-white p-2 rounded-md m-5 hover:bg-blue-600 cursor-pointer"
+      >
+        Back
+      </button>
+    </NuxtLink>
     <div class="flex justify-center items-center">
       <h1 class="text-3xl font-bold underline">Cart</h1>
     </div>
