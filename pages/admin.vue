@@ -16,7 +16,7 @@ const createProducts = async () => {
       "Content-Type": "application/json",
     },
     body: {
-      quantity: 200,
+      quantity: 50,
     },
   });
 
@@ -41,12 +41,12 @@ const createProducts = async () => {
       class="bg-blue-500 text-white p-2 rounded-md mt-5 cursor-pointer hover:bg-blue-600"
     >
       {{
-        getProducts().length == 200
-          ? "Create 200 new products"
-          : "Create 200 Product"
+        getProducts().length == 50
+          ? "Create 50 new products"
+          : "Create 50 Products"
       }}
     </button>
-    <div v-if="getProducts().length == 200">
+    <div v-if="getProducts().length == 50">
       <span class="text-red-500">Product already created</span>
     </div>
   </div>
