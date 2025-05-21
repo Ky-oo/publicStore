@@ -2,6 +2,7 @@
 import { getProducts } from "../stores/productsStore";
 import { addProductToCart, getProductsInCart } from "../stores/cartStore";
 import type { Product } from "../types/products";
+import { faker } from "@faker-js/faker";
 
 const searchQuery = ref("");
 const products = ref<Product[]>([]);
@@ -14,7 +15,8 @@ onMounted(async () => {
 });
 
 const handleAddProductToCart = (product: Product) => {
-  addProductToCart(product);
+  const addedProduct = { ...product, cartId: faker.string.uuid() };
+  addProductToCart(addedProduct);
 };
 </script>
 <template>

@@ -13,7 +13,7 @@ const getProductsInCart = () => {
 
 const removeProductFromCart = (productToRemove: Product) => {
   cart.value = cart.value.filter(
-    (product) => product.id !== productToRemove.id
+    (product) => product.cartId !== productToRemove.cartId
   );
 };
 

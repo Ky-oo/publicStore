@@ -10,6 +10,7 @@ interface Product {
   description: string;
   category: string;
   rating: Rating;
+  cartId?: string;
 }
 
 export { Product, Rating };

@@ -24,7 +24,6 @@ const addProductToCart = (product: Product) => {
         <span class="text-2xl font-bold text-blue-600">{{
           product.price
         }}</span>
-        <span class="ml-2 text-sm text-gray-500">€</span>
       </div>
 
       <p class="text-gray-600 mb-4 flex-grow">

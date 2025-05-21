@@ -27,7 +27,7 @@ import { getProductsInCart, removeProductFromCart } from "../stores/cartStore";
           </div>
 
           <button
-            class="bg-red-500 text-white p-2 rounded-md"
+            class="bg-red-500 text-white p-2 rounded-md cursor-pointer mx-2 hover:bg-red-600"
             @click="removeProductFromCart(product)"
           >
             X
